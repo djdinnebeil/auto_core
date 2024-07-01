@@ -1,0 +1,1 @@
+C:/DJ/Programming/Project Files/Auto Core/.vs

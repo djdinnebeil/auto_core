@@ -1,0 +1,69 @@
+body {
+    text-align: center;
+    padding-top: 100px;
+    font-family: Arial, sans-serif;
+}
+.logo, .wordmark {
+    display: inline-block;
+    height: 82px;
+    background: no-repeat center center;
+    background-size: contain;
+}
+.logo {
+    width: 82px;
+    background-image: image-set(
+        url("chrome://branding/content/about-logo.png") 1x, 
+        url("chrome://branding/content/about-logo@2x.png") 2x
+    );
+}
+.wordmark {
+    width: 134px;
+    background-image: url("chrome://branding/content/firefox-wordmark.svg");
+}
+.search-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+.search-inner-wrapper {
+    position: relative;
+    width: 720px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+#newtab-search-text {
+    flex-grow: 1;
+    height: 100%;
+    padding-left: 48px;
+    box-sizing: border-box;
+    border: none;
+    font-size: 16px;
+    outline: none;
+    background-image: url("moz-extension://e8bacde1-27e1-49de-b8e2-1860d038c50c/favicon.ico");
+    background-repeat: no-repeat;
+    background-position: 12px center;
+    background-size: 24px 24px;
+}
+.search-button {
+    background: url("chrome://browser/skin/forward.svg") no-repeat center center;
+    background-size: 16px 16px;
+    width: 48px;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    align-items: center;
+    align-self: center;
+}
+#bookmarks {
+    margin-top: 20px;
+}
+.bookmark {
+    margin: 0 10px;
+    text-decoration: none;
+    color: blue;
+}

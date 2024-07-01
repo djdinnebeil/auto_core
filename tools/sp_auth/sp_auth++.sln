@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version
+VisualStudioVersion = 17.10.34916.146
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sp_auth++", "sp_auth++.vcxproj", "{100EDFA1-5E37-4155-9595-A61DA2D8060A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{100EDFA1-5E37-4155-9595-A61DA2D8060A}.Debug|x64.ActiveCfg = Debug|x64
+		{100EDFA1-5E37-4155-9595-A61DA2D8060A}.Debug|x64.Build.0 = Debug|x64
+		{100EDFA1-5E37-4155-9595-A61DA2D8060A}.Debug|x86.ActiveCfg = Debug|Win32
+		{100EDFA1-5E37-4155-9595-A61DA2D8060A}.Debug|x86.Build.0 = Debug|Win32
+		{100EDFA1-5E37-4155-9595-A61DA2D8060A}.Release|x64.ActiveCfg = Release|x64
+		{100EDFA1-5E37-4155-9595-A61DA2D8060A}.Release|x64.Build.0 = Release|x64
+		{100EDFA1-5E37-4155-9595-A61DA2D8060A}.Release|x86.ActiveCfg = Release|Win32
+		{100EDFA1-5E37-4155-9595-A61DA2D8060A}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95657ACD-3385-4B11-BF8E-3AB0DDDCD746}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Custom New Tab Page</title>
+    <link rel="icon" type="image/png" href="chrome://branding/content/icon32.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="logo-and-wordmark">
+    <div class="logo"></div>
+    <div class="wordmark"></div>
+</div>
+<br>
+<div class="search-wrapper">
+    <div class="search-inner-wrapper">
+        <form action="https://www.google.com/search" method="GET">
+            <input id="newtab-search-text" type="search" name="q" placeholder="Search the web" autofocus>
+            <button id="searchSubmit" class="search-button" title="Search"></button>
+        </form>
+    </div>
+</div>
+<div id="bookmarks">
+    <a href="https://www.reddit.com" class="bookmark">Reddit</a>
+    <br><br>
+    <a href="https://www.nj.gov/labor/career-services/special-services/individuals-with-disabilities/" class="bookmark">Career Search</a>
+    <br><br>
+    <a href="http://localhost:8585/My%20Study/" class="bookmark">My Study</a>
+    <br><br>
+    <a href="https://nonzerosum.games/" class="bookmark">Nonzerosum</a>
+    <br><br>
+    <a href="http://localhost:8585/headers/" class="bookmark">Headers</a>
+    <br><br>
+    <a href="https://www.gmail.com" class="bookmark">My Gmail</a>
+</div>
+</body>
+</html>

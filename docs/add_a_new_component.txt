@@ -1,0 +1,16 @@
+Directory: C:\DJ\My Folder\Auto Core\core
+
+Output:
+..\..\bin\
+
+Intermediate:
+C:\DJ\Programming\Project Files\Auto Core\$(TargetName)\
+
+Linker - General - Additional Library Directories:
+C:\DJ\My Folder\Auto Core\shared\auto_core_dll\
+
+Linker - Input - Additional Dependencies:
+auto_core_dll.lib;
+
+Add a resource image:
+C:\DJ\My Folder\Auto Core\assets\resource.rc

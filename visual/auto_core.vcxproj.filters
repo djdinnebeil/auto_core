@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\auto_core.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\clipboard.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\clock.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cloud.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\crash.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\dash.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\end.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\itunes.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\journal.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\journey.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\keyboard.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\link.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\logger.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\logger_c.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\logger_t.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\logger_x.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\main.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\print.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\runtime.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\server.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\slash.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sp.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\star.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\taskbar.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\taskbar_11.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\taskbar_ps.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\utils.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wake.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\auto_core.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\base.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\clipboard.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\clock.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\cloud.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\config.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\core.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\crash.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\dash.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\dash_x.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\end.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\itunes.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\journal.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\journey.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\keyboard.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\link.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\logger.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\logger_c.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\logger_t.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\logger_x.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\main.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\numkey.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\pipes.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\print.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\runtime.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\server.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\slash.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\sp.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\star.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\taskbar.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\taskbar_11.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\taskbar_ps.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\thread.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\utils.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\visual.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\wake.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\import\tasks.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tasks.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pipes.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\assets\resource.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,13 @@
+#sidebarContainer {
+    display: none !important;
+}
+
+#viewerContainer {
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important; 
+}
+
+.toolbar * {
+    visibility: collapse !important;
+}

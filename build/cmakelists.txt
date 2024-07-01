@@ -1,0 +1,113 @@
+# Specify the minimum version of CMake required
+cmake_minimum_required(VERSION 3.30)
+
+# Set the project name and version
+project(auto_core)
+
+# Specify the C++ standard
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+# Specify the C standard
+set(CMAKE_C_STANDARD 17)
+set(CMAKE_C_STANDARD_REQUIRED True)
+
+# Set the character set to Unicode
+add_definitions(-DUNICODE -D_UNICODE)
+
+# Set output directories
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE "${CMAKE_SOURCE_DIR}/bin")
+
+# Add the executable with all .cxx files
+add_executable(auto_core
+    "${CMAKE_SOURCE_DIR}/../src/logger_x.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/main.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/pipes.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/print.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/runtime.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/server.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/slash.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/sp.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/star.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/taskbar.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/taskbar_11.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/taskbar_ps.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/tasks.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/utils.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/wake.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/auto_core.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/clipboard.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/clock.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/cloud.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/config.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/crash.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/dash.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/end.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/itunes.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/journal.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/journey.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/keyboard.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/link.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/logger.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/logger_c.cxx"
+    "${CMAKE_SOURCE_DIR}/../src/logger_t.cxx"
+    "${CMAKE_SOURCE_DIR}/../assets/resource.rc"  # Add the resource file for the icon
+)
+
+# Add external library directories
+link_directories("C:/DJ/My Folder/Auto Core/lib")
+
+# Add external libraries
+target_link_libraries(auto_core PRIVATE
+    civetweb
+    civetweb-cpp
+    dbghelp
+    libcurl
+    sqlite3
+    tag
+    tag_c
+    zlib
+)
+
+# Add the imports in the specified order
+add_library(imports STATIC
+    "${CMAKE_SOURCE_DIR}/../import/base.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/config.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/clock.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/logger.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/core.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/crash.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/dash.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/dash_x.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/end.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/itunes.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/journal.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/journey.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/keyboard.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/link.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/logger_c.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/logger_t.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/logger_x.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/main.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/numkey.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/pipes.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/print.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/runtime.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/server.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/slash.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/sp.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/star.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/taskbar.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/taskbar_11.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/taskbar_ps.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/tasks.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/thread.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/utils.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/visual.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/wake.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/auto_core.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/clipboard.ixx"
+    "${CMAKE_SOURCE_DIR}/../import/cloud.ixx"
+)
+target_link_libraries(auto_core PRIVATE imports)
