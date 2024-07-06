@@ -219,6 +219,12 @@
     <ClCompile Include="..\src\pipes.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\import\notes.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\notes.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\assets\resource.rc">

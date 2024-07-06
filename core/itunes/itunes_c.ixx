@@ -157,18 +157,21 @@ void iTunes::initialize_com() {
     if (initialized) {
         return;
     }
-    hr = CoInitializeEx(NULL, COINIT_MULTITHREADED);  // Change to STA
+    hr = CoInitializeEx(NULL, COINIT_MULTITHREADED);
     if (FAILED(hr)) {
+        iTunes_logger.logg_and_print("Failed to initialize COM library.");
         return;
     }
     CLSID clsid;
     hr = CLSIDFromProgID(L"iTunes.Application", &clsid);
     if (FAILED(hr)) {
+        iTunes_logger.logg_and_print("Failed to get CLSID from ProgID.");
         CoUninitialize();
         return;
     }
     hr = CoCreateInstance(clsid, NULL, CLSCTX_LOCAL_SERVER, IID_IDispatch, (void**)&iTunes_app);
     if (FAILED(hr)) {
+        iTunes_logger.logg_and_print("Failed to create iTunes COM instance.");
         CoUninitialize();
         return;
     }

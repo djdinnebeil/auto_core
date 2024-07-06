@@ -22,6 +22,7 @@ export import taskbar;
 export import taskbar_ps;
 export import taskbar_11;
 export import wake;
+export import notes;
 
 export import pipes;
 export import cloud;

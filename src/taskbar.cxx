@@ -2,6 +2,7 @@ module taskbar;
 import base;
 import config;
 import visual;
+import notes;
 import <Windows.h>;
 
 BOOL CALLBACK enum_folder_windows(HWND hwnd, LPARAM lParam) {

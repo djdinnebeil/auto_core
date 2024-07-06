@@ -69,6 +69,7 @@ export function<void()> get_function_by_name(const string& function_name) {
         {"print_datestamp", &print_datestamp},
         {"add_brackets_around_clipboard", &add_brackets_around_clipboard},
         {"send_alt_f12", &send_alt_f12},
+        {"create_new_note", &create_new_note},
         {"retrieve_and_delete_recycle_bin", &retrieve_and_delete_recycle_bin},
         {"get_user_sp_queue", &get_user_sp_queue},
         {"print_spotify_songs", &print_spotify_songs},

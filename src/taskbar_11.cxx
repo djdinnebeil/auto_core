@@ -26,7 +26,7 @@ BOOL CALLBACK enum_zoom_windows(HWND hwnd, LPARAM lParam) {
     WCHAR window_title[buffer_size];
     if (GetWindowTextW(hwnd, window_title, buffer_size) > 0 && IsWindowVisible(hwnd)) {
         wstring title(window_title);
-        if (title.length() >= 12 && title.substr(title.length() - 12) == L"Zoom Meeting") {
+        if (title.length() >= 12 && title.starts_with(L"Zoom Meeting")) {
             zoom_window_hwnd = hwnd;
             zoom_windows++;
         }

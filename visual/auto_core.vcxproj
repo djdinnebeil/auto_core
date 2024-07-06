@@ -179,6 +179,7 @@
     <ClCompile Include="..\import\logger_t.ixx" />
     <ClCompile Include="..\import\logger_x.ixx" />
     <ClCompile Include="..\import\main.ixx" />
+    <ClCompile Include="..\import\notes.ixx" />
     <ClCompile Include="..\import\numkey.ixx" />
     <ClCompile Include="..\import\pipes.ixx" />
     <ClCompile Include="..\import\print.ixx" />
@@ -213,6 +214,7 @@
     <ClCompile Include="..\src\logger_t.cxx" />
     <ClCompile Include="..\src\logger_x.cxx" />
     <ClCompile Include="..\src\main.cxx" />
+    <ClCompile Include="..\src\notes.cxx" />
     <ClCompile Include="..\src\pipes.cxx" />
     <ClCompile Include="..\src\print.cxx" />
     <ClCompile Include="..\src\runtime.cxx" />
