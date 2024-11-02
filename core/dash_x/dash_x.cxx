@@ -248,8 +248,8 @@ int main(int argc, char* argv[]) {
         if (result != 0) {
             cerr << "Build failed with a return code of " << result << endl;
         }
-        cout << "Press any key to exit." << endl;
-        cin.get();
     }
+    cout << "Press any key to exit." << endl;
+    cin.get();
     return 0;
 }

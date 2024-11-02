@@ -252,6 +252,54 @@ void activate_discord() {
     taskbar.activate_discord();
 }
 
+bool isWindowClassFirefox() {
+    const int buffer_size = 1024;
+    WCHAR window_title[buffer_size];
+    WCHAR className[buffer_size];
+
+    HWND hwnd = GetForegroundWindow();
+    if (hwnd == NULL) {
+        return false;
+    }
+
+    if (GetWindowTextW(hwnd, window_title, buffer_size) > 0 && IsWindowVisible(hwnd)) {
+        GetClassNameW(hwnd, className, buffer_size);
+        wstring wTitle(window_title);
+        wstring wClass(className);
+
+        if (wClass == L"MozillaWindowClass") {
+            return true;
+        }
+    }
+    return false;
+}
+
+/** \runtime */
+void refresh_page() {
+    BYTE keys[] = {VK_CONTROL, 'R'};
+    send_key_combination(keys, 2);
+}
+
+
+/** \runtime */
+void refresh_firefox() {
+    logg("activate_firefox()");
+    if (isWindowClassFirefox()) {
+        start_reddit_new_tab();
+        //refresh_page();
+    }
+    else {
+        activate_firefox();
+    }
+}
+
+/** \runtime */
+void start_reddit_new_tab() {
+    wstring url = L"https://www.reddit.com";
+    wstring firefox_path = LR"(C:\Program Files\Mozilla Firefox\firefox.exe)";
+    ShellExecuteW(0, 0, firefox_path.c_str(), url.c_str(), 0, SW_SHOW);
+}
+
 /** \runtime */
 void activate_firefox() {
     logg("activate_firefox()");

@@ -10,6 +10,16 @@ import <Windows.h>;
 
 bool dash_selected = false;
 
+string read_file_to_string() {
+    ifstream file(R"(.\link\my_study.txt)");
+    if (!file.is_open()) {
+        throw runtime_error("Could not open file ");
+    }
+    ss buffer;
+    buffer << file.rdbuf();
+    return buffer.str();
+}
+
 /**
  * \brief Formats a dash-separated prompt string.
  *
@@ -90,7 +100,11 @@ string get_gpt_message() {
         logg("{}", selection_str);
         try {
             if (selection_str.empty()) {
-                return gpt_prompts[gpt_prompts.size() - 1];
+                string file_output = read_file_to_string();
+                if (file_output.empty()) {
+                    return gpt_prompts[gpt_prompts.size() - 1];
+                }
+                return file_output;
             }
             selection = stoi(selection_str);
             if (selection == 0 || selection > gpt_prompts.size()) {

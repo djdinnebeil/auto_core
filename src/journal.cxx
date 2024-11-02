@@ -85,6 +85,7 @@ void thread_print_choice_with_zero() {
  * \param include_zero Indicates if the range should include zero.
  */
 void print_choice(const string& name, bool include_zero) {
+    logg("print_choice()");
     choice_selector = name;
     if (include_zero) {
         thread t([=]() {run_with_exception_handling(thread_print_choice_with_zero); });
@@ -103,12 +104,13 @@ void print_choice(const string& name, bool include_zero) {
  * \param include_zero Indicates if the range should include zero.
  * \return A function that prints the random choice.
  */
-function<void()> make_print_choice(const string& name, bool include_zero) {
+function<void()> make_print_choice(const string& name, bool include_zero = false) {
     return [=]() {print_choice(name, include_zero); };
 }
 
 /** \runtime */
 void print_Tabby_choice() {
+    logg("print_Tabby_choice()");
     choice_selector = "Tabby";
     thread t([=]() {run_with_exception_handling(thread_print_choice_with_zero); });
     t.detach();
@@ -116,6 +118,7 @@ void print_Tabby_choice() {
 
 /** \runtime */
 void print_Eric_choice() {
+    logg("print_Eric_choice()");
     choice_selector = "Eric";
     thread t([=]() {run_with_exception_handling(thread_print_choice_with_zero); });
     t.detach();
@@ -123,6 +126,7 @@ void print_Eric_choice() {
 
 /** \runtime */
 void print_Katrina_choice() {
+    logg("print_Katrina_choice()");
     choice_selector = "Katrina";
     thread t([=]() {run_with_exception_handling(thread_print_choice_with_zero); });
     t.detach();
@@ -130,6 +134,7 @@ void print_Katrina_choice() {
 
 /** \runtime */
 void print_Lily_choice() {
+    logg("print_Lily_choice()");
     choice_selector = "Lily";
     thread t([=]() {run_with_exception_handling(thread_print_choice_with_name); });
     t.detach();
@@ -137,6 +142,7 @@ void print_Lily_choice() {
 
 /** \runtime */
 void print_Star_choice() {
+    logg("print_Star_choice()");
     choice_selector = "Star";
     thread t([=]() {run_with_exception_handling(thread_print_choice_with_zero); });
     t.detach();
@@ -144,20 +150,15 @@ void print_Star_choice() {
 
 /** \runtime */
 void print_Luna_choice() {
+    logg("print_Luna_choice()");
     choice_selector = "Luna";
     thread t([=]() {run_with_exception_handling(thread_print_choice_with_name); });
     t.detach();
 }
 
 /** \runtime */
-void print_Daniel_42_choice() {
-    int random_number = get_random_number(0, 100);
-    string random_number_str = format("Daniel selects {}.", random_number);
-    print_to_screen(random_number_str);
-}
-
-/** \runtime */
 void print_Daniel_choice() {
+    logg("print_Daniel_choice()");
     choice_selector = "Daniel";
     thread t([=]() {run_with_exception_handling(thread_print_choice_with_name); });
     t.detach();
@@ -165,7 +166,18 @@ void print_Daniel_choice() {
 
 /** \runtime */
 void print_Jose_choice() {
+    logg("print_Jose_choice()");
     choice_selector = "Jose";
     thread t([=]() {run_with_exception_handling(thread_print_choice_with_zero); });
     t.detach();
+}
+
+/** \runtime */
+void print_one_is_selected() {
+    print_to_screen("1 is selected.");
+}
+
+/** \runtime */
+void print_two_is_selected() {
+    print_to_screen("2 is selected.");
 }

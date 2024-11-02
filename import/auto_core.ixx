@@ -42,7 +42,7 @@ export void set_action_map() {
     ac_numkey_event[numkey_dash]  = {sp_switch_player, print_Jose_choice};
     ac_numkey_event[numkey_slash] = {retrieve_and_delete_recycle_bin, remove_iTunes_song};
     ac_numkey_event[play_pause_key] = {iTunes_play_pause, print_Eric_choice};
-    ac_numkey_event[home_page_key] = {print_Daniel_42_choice, activate_powershell};
-    ac_numkey_event[mail_key] = {print_task_list, print_Katrina_choice};
+    ac_numkey_event[home_page_key] = {print_Katrina_choice, activate_powershell};
+    ac_numkey_event[mail_key] = {print_Luna_choice, print_task_list};
     ac_numkey_event[calculator_key] = {get_user_sp_queue, print_Tabby_choice};
 }

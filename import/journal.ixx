@@ -21,7 +21,8 @@ export {
     void print_Star_choice();
     void print_Luna_choice();
     void print_Daniel_choice();
-    void print_Daniel_42_choice();
     void print_Jose_choice();
     void print_Tabby_choice();
+    void print_one_is_selected();
+    void print_two_is_selected();
 }

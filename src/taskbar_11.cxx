@@ -106,13 +106,14 @@ BOOL CALLBACK enum_ps_in_visual_key_windows(HWND hwnd, LPARAM lParam) {
     WCHAR window_title[buffer_size];
     if (GetWindowTextW(hwnd, window_title, buffer_size) > 0 && IsWindowVisible(hwnd)) {
         wstring title(window_title);
-        if (title.starts_with(L"Administrator:")) {
+        if (title.starts_with(L"DJ@DESKTOP:")) {
             ps_in_visual_key_hwnd = hwnd;
             ps_in_visual_key_windows++;
         }
     }
     return TRUE;
 }
+
 /** \runtime */
 void activate_wordpad() {
     wordpad_windows = 0;
@@ -268,7 +269,7 @@ void activate_powershell() {
 /** \runtime */
 void activate_ps_in_visual_key() {
     ps_in_visual_key_windows = 0;
-    EnumWindows(enum_powershell_windows, 0);
+    EnumWindows(enum_ps_in_visual_key_windows, 0);
     if (!ps_in_visual_key_windows) {
         logg("activate_ps_in_visual_key() - launch new");
         send_ctrl_alt_t();

@@ -72,6 +72,7 @@ export {
     using std::make_format_args;
     using std::forward;
     using std::endl;
+    using std::runtime_error;
 
     // STL Containers
     using std::array;

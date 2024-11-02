@@ -1,6 +1,7 @@
 module journey;
 import base;
 import print;
+import keyboard;
 import <windows.h>;
 
 /**
@@ -23,7 +24,6 @@ bool create_process(const wstring& path) {
     CloseHandle(pi.hThread);
     return true;
 }
-
 
 /**
  * \brief Starts the journey process.

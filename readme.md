@@ -15,10 +15,10 @@ Auto Core is a C++ utility designed to streamline task execution on Windows 11 s
 ## Folder Structure
 - assets - Graphical resources.
 - bin - Compiled executables.
-- build - CMakeLists.txt and script templates.
+- build - CMakeLists.txt.
 - config - Configuration files.
 - core - Core components.
-- dash - User's task list.
+- dash - 
 - dist - Runtime configuration.
 - docs - Documentation.
 - import - Main program modules.

@@ -19,6 +19,9 @@ export {
     void activate_spotify();
     void activate_visual();
     void activate_firefox();
+    void refresh_firefox();
+    void refresh_page();
+    void start_reddit_new_tab();
 }
 
 export class Taskbar {

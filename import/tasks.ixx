@@ -16,6 +16,7 @@ import main;
 import <Windows.h>;
 
 export {
+    void launch_task_list();
     void print_task_list();
     string get_task_list();
 }

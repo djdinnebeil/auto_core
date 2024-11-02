@@ -8,6 +8,12 @@ import thread;
 import main;
 import <Windows.h>;
 
+/** \runtime */
+void launch_task_list() {
+    LPCWSTR filePath = LR"(C:\DJ\My Folder\Auto Core\link\task_list.rc)";
+    ShellExecuteW(NULL, L"open", L"notepad.exe", filePath, NULL, SW_SHOWDEFAULT);
+}
+
 string get_task_list() {
     const string task_list_path = R"(.\link\task_list.rc)";
     ifstream file(task_list_path, ios::binary | ios::ate);

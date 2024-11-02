@@ -305,7 +305,7 @@ bool Spotify::refresh_tokens() {
  * \brief Retrieves the current Spotify song.
  */
 void Spotify::get_current_song() {
-    sp_logger.logg_and_logg("get_current_song()");
+    sp_logger.logg("get_current_song()");
     if (!refresh_tokens()) {
         return;
     }
@@ -316,7 +316,7 @@ void Spotify::get_current_song() {
     );
     last_status_code = 1;
     if (response.status_code != 200) {
-        sp_logger.logg_and_logg("{} status code", response.status_code);
+        sp_logger.logg("{} status code", response.status_code);
         if (response.status_code == 204) {
             is_playing = false;
         }
