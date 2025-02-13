@@ -43,7 +43,7 @@ string format_dash_prompt(const string& str) {
             formatted_names << ", ";
         }
         else if (((i + 1) % 5 == 0) && (i + 1 != names.size())) {
-            formatted_names << "\n";
+            formatted_names << "";
         }
         else if (i + 1 != names.size()) {
             formatted_names << ", ";
@@ -140,9 +140,9 @@ void threaded_print_gpt_message() {
     print(gpt_message);
     wss ws;
     ws << gpt_message.c_str();
-    if (dash_selected) {
-        ws << "\n\n";
-    }
+    //if (dash_selected) {
+    //    ws << "\n\n";
+    //}
     set_clipboard_text(ws.str());
     SetForegroundWindow(current_window_handle);
     paste_from_clipboard();

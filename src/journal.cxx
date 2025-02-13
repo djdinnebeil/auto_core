@@ -79,6 +79,17 @@ void thread_print_choice_with_zero() {
 }
 
 /**
+ * \brief Generates and prints a random choice with zero included.
+ *
+ * Generates a random number within the range of 0 to upper_choice and prints it to the screen.
+ */
+void thread_print_choice_with_custom() {
+    set_number_of_choices();
+    int random_choice_number = get_random_number(3, upper_choice);
+    print_to_screen(format("{} selects {}.", choice_selector, random_choice_number));
+}
+
+/**
  * \brief Prints a random choice for a given name.
  *
  * \param name The name associated with the choice.
@@ -103,6 +114,8 @@ void print_choice(const string& name, bool include_zero) {
  * \param name The name associated with the choice.
  * \param include_zero Indicates if the range should include zero.
  * \return A function that prints the random choice.
+ * 
+ * \runtime
  */
 function<void()> make_print_choice(const string& name, bool include_zero = false) {
     return [=]() {print_choice(name, include_zero); };
@@ -169,6 +182,22 @@ void print_Jose_choice() {
     logg("print_Jose_choice()");
     choice_selector = "Jose";
     thread t([=]() {run_with_exception_handling(thread_print_choice_with_zero); });
+    t.detach();
+}
+
+/** \runtime */
+void print_James_choice() {
+    logg("print_James_choice()");
+    choice_selector = "James";
+    thread t([=]() {run_with_exception_handling(thread_print_choice_with_custom); });
+    t.detach();
+}
+
+/** \runtime */
+void print_Jace_choice() {
+    logg("print_Jace_choice()");
+    choice_selector = "Jace";
+    thread t([=]() {run_with_exception_handling(thread_print_choice_with_custom); });
     t.detach();
 }
 

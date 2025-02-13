@@ -60,6 +60,8 @@ export function<void()> get_function_by_name(const string& function_name) {
         {"print_Luna_choice", &print_Luna_choice},
         {"print_Daniel_choice", &print_Daniel_choice},
         {"print_Jose_choice", &print_Jose_choice},
+        {"print_James_choice", &print_James_choice},
+        {"print_Jace_choice", &print_Jace_choice},
         {"print_one_is_selected", &print_one_is_selected},
         {"print_two_is_selected", &print_two_is_selected},
         {"print_gpt_message", &print_gpt_message},

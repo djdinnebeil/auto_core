@@ -5,9 +5,10 @@
 #viewerContainer {
     left: 0 !important;
     right: 0 !important;
-    top: 0 !important; 
+    top: 0 !important;
 }
 
 #toolbarContainer {
     visibility: collapse !important;
+    overflow: hidden !important; /* Hide horizontal scrollbar */
 }
