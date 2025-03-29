@@ -65,6 +65,7 @@ export function<void()> get_function_by_name(const string& function_name) {
         {"print_one_is_selected", &print_one_is_selected},
         {"print_two_is_selected", &print_two_is_selected},
         {"print_gpt_message", &print_gpt_message},
+        {"print_networking", &print_networking},
         {"close_program", &close_program},
         {"activate_function_key", &activate_function_key},
         {"deactivate_function_key", &deactivate_function_key},

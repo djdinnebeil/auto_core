@@ -8,7 +8,7 @@
  * The main function manages the application lifecycle, including setting up the environment,
  * entering the message loop, and handling exceptions.
  *
- * \author Jose, Tabby, DJ, Daniel, Star
+ * \author Jose, Star, DJ, Daniel, Tabby
  */
 module auto_core;
 import config;

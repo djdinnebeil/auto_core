@@ -12,13 +12,40 @@ Auto Core is a C++ utility designed to streamline task execution on Windows 11 s
 - **Browser-based Local File Management:** Runs a local server to facilitate browser-based local file access.
 - **System Maintenance:** Supports maintenance tasks, including emptying the recycle bin and logging system wake events.
 
+## Project Architecture
+Auto Core is designed with a modular component architecture that separates the main system controller from specialized component executables.
+
+The components are stored in the 'core' directory.
+
+The components are:
+- dash_x - for runtime configuration. 
+- itunes - for interacting with iTunes.
+- server - for a local server to allow local file access through a browser.
+- slash - for deleting files and folders
+- sp - for interacting with Spotify.
+- wake - for tracking system activity, such as waking up.
+
+To differentiate component scripts from main scripts, the following notation is used:
+- _x - this indicates an external component
+- _c - this indicates a class for the component
+- _t - this indicates a thread for the component
+
+The main component will have:
+sp.ixx
+while the external component will have:
+sp_x.ixx
+
+The components talk to each other through pipes.
+
+Modules that are shared between components are marked by adding a \hardlink tag.
+
 ## Folder Structure
 - assets - Graphical resources.
 - bin - Compiled executables.
 - build - CMakeLists.txt.
 - config - Configuration files.
 - core - Core components.
-- dash - 
+- dash - Dedicated folder for building.
 - dist - Runtime configuration.
 - docs - Documentation.
 - import - Main program modules.

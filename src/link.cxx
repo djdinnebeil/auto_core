@@ -161,3 +161,15 @@ void print_gpt_message() {
     thread t([=]() {run_with_exception_handling(threaded_print_gpt_message); });
     t.detach();
 }
+
+/**
+ * \brief Prints networking.
+ *
+ * This function prints 'networking'.
+ *
+ * \runtime
+ */
+void print_networking() {
+    set_clipboard_text(L"Networking");
+    paste_from_clipboard();
+}
