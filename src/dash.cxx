@@ -89,10 +89,15 @@ void parse_and_set_action_map() {
         else if (key == calculator_key) {
             ac_numkey_event[calculator_key] = {get_function_by_name(primary), get_function_by_name(secondary)};
         }
-        log_buffer << key << " = " << primary << ", " << secondary << "\n";
-        //logg("{} = {}, {}", key, primary, secondary);
-        cout << config.runtime_enabled;
+        if (config.runtime_debugger) {
+            logg("{} = {}, {}", key, primary, secondary);
+        }
+        else if (config.runtime_logger) {
+            log_buffer << key << " = " << primary << ", " << secondary << "\n";
+        }
     }
-    logg(log_buffer.str());
+    if (!config.runtime_debugger && config.runtime_logger) {
+        logg(log_buffer.str());
+    }
     config_file.close();
 }

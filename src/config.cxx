@@ -47,6 +47,16 @@ void Config::load_runtime_config() {
     auto close_bracket = line.find(']');
     string value = line.substr(open_bracket + 1, close_bracket - open_bracket - 1);
     runtime_enabled = value == "true";
+    getline(runtime_file, line);
+    open_bracket = line.find('[');
+    close_bracket = line.find(']');
+    value = line.substr(open_bracket + 1, close_bracket - open_bracket - 1);
+    runtime_logger = value == "true";
+    getline(runtime_file, line);
+    open_bracket = line.find('[');
+    close_bracket = line.find(']');
+    value = line.substr(open_bracket + 1, close_bracket - open_bracket - 1);
+    runtime_debugger = value == "true";
     runtime_file.close();
     configuration_log += "runtime values set\n";
 }

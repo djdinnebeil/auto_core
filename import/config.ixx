@@ -32,6 +32,8 @@ public:
     wstring current_directory;
     wstring program_title;
     bool runtime_enabled;
+    bool runtime_debugger;
+    bool runtime_logger;
     bool start_server;
     int port_number;
     int end_of_day;
