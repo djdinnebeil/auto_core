@@ -45,8 +45,8 @@ Modules that are shared between components are marked by adding a \hardlink tag.
 - build - CMakeLists.txt.
 - config - Configuration files.
 - core - Core components.
-- dash - Dedicated folder for building.
-- dist - Runtime configuration.
+- dash - Runtime configuration.
+- dist - Dedicated folder for building.
 - docs - Documentation.
 - import - Main program modules.
 - lib - External libraries.

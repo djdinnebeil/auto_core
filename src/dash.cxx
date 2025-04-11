@@ -13,6 +13,7 @@ import <Windows.h>;
 void parse_and_set_action_map() {
     ifstream config_file(R"(.\config\runtime_map.ini)");
     string line;
+    oss log_buffer;
     while (getline(config_file, line)) {
         size_t opening_bracket = line.find('[');
         size_t closing_bracket = line.find(']');
@@ -87,7 +88,9 @@ void parse_and_set_action_map() {
         else if (key == calculator_key) {
             ac_numkey_event[calculator_key] = {get_function_by_name(primary), get_function_by_name(secondary)};
         }
-        logg("{} = {}, {}", key, primary, secondary);
+        log_buffer << key << " = " << primary << ", " << secondary << "\n";
+        //logg("{} = {}, {}", key, primary, secondary);
     }
+    logg(log_buffer.str());
     config_file.close();
 }

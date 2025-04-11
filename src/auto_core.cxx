@@ -18,6 +18,27 @@ import dash;
 import end;
 import <Windows.h>;
 
+
+
+using Clock = chrono::high_resolution_clock;
+
+
+LARGE_INTEGER frequency;
+LARGE_INTEGER start_time;
+LARGE_INTEGER end_time;
+
+void start_timer() {
+    QueryPerformanceFrequency(&frequency);
+    QueryPerformanceCounter(&start_time);
+}
+
+double end_timer() {
+    QueryPerformanceCounter(&end_time);
+    return static_cast<double>(end_time.QuadPart - start_time.QuadPart) * 1'000'000.0 / frequency.QuadPart; // microseconds
+}
+
+
+
 /**
  * \brief Initializes the console and sets up exception handling.
  */
@@ -79,7 +100,36 @@ int main(int argc, char* argv[]) {
         crash_check();
         create_pipe_servers();
         start_components();
+
         config.runtime_enabled ? parse_and_set_action_map() : set_action_map();
+
+        //double total = 0;
+        //const int N = 1000;
+        //for (int i = 0; i < N; ++i) {
+        //    auto start = Clock::now();
+        //    config.runtime_enabled ? parse_and_set_action_map() : set_action_map();
+        //    auto end = Clock::now();
+        //    total += chrono::duration_cast<chrono::microseconds>(end - start).count();
+        //}
+        //print("Average setup time for runtime_enabled={} over {} runs: {} microseconds", config.runtime_enabled, N, total / N);
+
+        double total_time = 0.0;
+        const int NUM_RUNS = 1000;
+
+        for (int i = 0; i < NUM_RUNS; ++i) {
+            start_timer();
+            config.runtime_enabled ? parse_and_set_action_map() : set_action_map();
+            total_time += end_timer();
+        }
+
+        double avg_time = total_time / NUM_RUNS;
+        if (config.runtime_enabled) {
+            cout << "Average setup time for runtime_enabled=true over " << NUM_RUNS << " runs: " << avg_time << " µs\n";
+        }
+        else {
+            cout << "Average setup time for runtime_enabled=false over " << NUM_RUNS << " runs: " << avg_time << " µs\n";
+        }
+
         thread taskbar_ps_thread(run_taskbar_ps);
         taskbar_ps_thread.detach();
         thread program_ready_thread(print_program_ready);
