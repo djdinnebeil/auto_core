@@ -2,6 +2,7 @@ module dash;
 import core;
 import auto_core;
 import dash_x;
+import config;
 import <Windows.h>;
 
 /**
@@ -90,6 +91,7 @@ void parse_and_set_action_map() {
         }
         log_buffer << key << " = " << primary << ", " << secondary << "\n";
         //logg("{} = {}, {}", key, primary, secondary);
+        cout << config.runtime_enabled;
     }
     logg(log_buffer.str());
     config_file.close();
