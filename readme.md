@@ -62,6 +62,24 @@ Modules that are shared between components are marked by adding a \hardlink tag.
 - utils - Utility and helper scripts, such as creating a new journaling database.
 - visual - Visual Studio-related files, such as .sln and .pdb.
 
+## Config Folder
+
+clock.ini - the end_of_day can be adjusted, such as 00:59 vs. 24:59
+logger.ini - allows for enhanced debugging by sending any log statement to the console window
+runtime.ini - allows for runtime configuration and logging / debugging runtime mappings 
+runtime_map.ini - has the runtime mappings set and is also available in the dash folder
+server.ini - controls server related settings, like port 
+star.ini - has journal related settings
+taskbar.ini - a list of the user's first 10 elements on the taskbar
+
+## Dash Folder
+
+dash_x.ini - this is a hard link of dash_x.ixx, located in the 'import' folder
+runtime_map.ini - this is a hard link of runtime_map.ini from 'config'
+
+By opening dash_x.ini with runtime_map.ini allows for IntelliSense autocomplete
+
+
 ## Modules Overview
 For a detailed description of each module, please refer to the [Doxygen documentation](./docs/html/files.html).
 

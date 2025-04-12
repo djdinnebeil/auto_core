@@ -1,0 +1,5 @@
+Average setup time for runtime_enabled=true over 1000 runs: 236.237 microseconds
+Average setup time for runtime_enabled=false over 1000 runs: 0.225 microseconds
+
+Average setup time for runtime_enabled=true over 1000 runs: 264.906  s
+Average setup time for runtime_enabled=false over 1000 runs: 0.3455  s
