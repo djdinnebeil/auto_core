@@ -64,25 +64,38 @@ Modules that are shared between components are marked by adding a \hardlink tag.
 
 ## Config Folder
 
-clock.ini - the end_of_day can be adjusted, such as 00:59 vs. 24:59
-logger.ini - allows for enhanced debugging by sending any log statement to the console window
-runtime.ini - allows for runtime configuration and logging / debugging runtime mappings 
-runtime_map.ini - has the runtime mappings set and is also available in the dash folder
-server.ini - controls server related settings, like port 
-star.ini - has journal related settings
-taskbar.ini - a list of the user's first 10 elements on the taskbar
+### Summary
+
+The `config` folder holds all runtime and environment settings for Auto Core, while the `dash` folder provides a developer-facing overlay to support editing, debugging, and IntelliSense integration in VS Code.
+
+### Files
+- `clock.ini` — Defines `end_of_day`, such as `00:59` vs. `24:59`.
+- `logger.ini` — Enables enhanced debugging by forwarding all log statements to the console window.
+- `runtime.ini` — Controls whether runtime configuration is enabled. Also allows selection of logging mode: `debug`, `buffered`, or `silent`.
+- `runtime_map.ini` — Stores runtime key mappings used when runtime configuration is enabled. If disabled, mappings are hardcoded and this file is ignored.
+- `server.ini` — Contains local web server settings, such as the port number, if local file serving is needed.
+- `star.ini` — Stores journal-related settings.
+- `taskbar.ini` — Lists the first 10 programs pinned to the user's taskbar.
 
 ## Dash Folder
 
-dash_x.ini - this is a hard link of dash_x.ixx, located in the 'import' folder
-runtime_map.ini - this is a hard link of runtime_map.ini from 'config'
+The Dash folder acts as a convenience layer to simplify modifying runtime mappings.
 
-By opening dash_x.ini with runtime_map.ini allows for IntelliSense autocomplete
+- `dash_x.ini` — A hard link to `dash_x.ixx`. Contains a list of functions tagged with `\runtime`. When opened in VS Code, it makes those functions globally accessible, enabling IntelliSense autocomplete.
+- `runtime_map.ini` — A hard link to `config/runtime_map.ini`. Contains the actual key-to-function mappings defined by the user.
 
+This setup enables VS Code to provide autocomplete for user-defined runtime functions by simply opening `dash_x.ini`, while linking directly to the active configuration via `runtime_map.ini`.
+
+
+## Tagging Runtime Functions
+To make a function available for runtime configuration, tag it with \runtime.
+
+After tagging, run dash_x.exe to update the function list. This ensures that the new function is recognized and available for use in runtime_map.ini.
+
+Note: Runtime configuration must be enabled in config/runtime.ini for these functions to take effect.
 
 ## Modules Overview
 For a detailed description of each module, please refer to the [Doxygen documentation](./docs/html/files.html).
-
 ## Requirements
 - Windows 11
 - C++ Compiler (supporting C++23)

@@ -1,14 +1,14 @@
 /*
 There are two tests that can be copied and pasted into main().
 
-The first 
+Note that there is a print statement to notify the user if debugger mode is enabled.
 */
 
 
 // Benchmark using std::chrono for portable, high-level timing.
 // Measures average setup time for parse_and_set_action_map() or set_action_map()
 // based on config.runtime_enabled. Useful for cross-platform validation.
-import <chrono>
+// import <chrono>
 {
     using Clock = chrono::high_resolution_clock;
     double total = 0;
@@ -25,7 +25,7 @@ import <chrono>
 // Benchmark using QueryPerformanceCounter for high-resolution Windows-native timing.
 // Measures the same setup function and converts result to microseconds.
 // The result is formatted with precision and length control for display.
-import <Windows.h>
+// import <Windows.h>
 {
     LARGE_INTEGER frequency, start_time, end_time;
     QueryPerformanceFrequency(&frequency);

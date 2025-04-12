@@ -15,6 +15,7 @@ void parse_and_set_action_map() {
     ifstream config_file(R"(.\config\runtime_map.ini)");
     string line;
     oss log_buffer;
+    bool log_buffer_check = false;
     while (getline(config_file, line)) {
         size_t opening_bracket = line.find('[');
         size_t closing_bracket = line.find(']');
@@ -93,11 +94,21 @@ void parse_and_set_action_map() {
             logg("{} = {}, {}", key, primary, secondary);
         }
         else if (config.runtime_logger) {
-            log_buffer << key << " = " << primary << ", " << secondary << "\n";
+            if (log_buffer_check) {
+                log_buffer << "\n" << key << " = " << primary << ", " << secondary;
+            }
+            else {
+                log_buffer_check = true;
+                log_buffer << key << " = " << primary << ", " << secondary;
+            }
         }
     }
-    if (!config.runtime_debugger && config.runtime_logger) {
+    if (config.runtime_debugger) {
+        print("runtime logger set to debug mode");
+    }
+    else if (config.runtime_logger) {
         logg(log_buffer.str());
     }
+    logg("runtime map configured");
     config_file.close();
 }
