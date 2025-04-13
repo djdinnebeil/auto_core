@@ -6,24 +6,24 @@ import config;
 import <Windows.h>;
 
 // Internal helper to parse a runtime_map.ini line
-static bool parse_line(const string& line, string& key_string, string& primary, string& secondary) {
+static bool parse_line(string_view line, string_view& key_string, string_view& primary, string_view& secondary) {
     size_t opening_bracket = line.find('[');
     size_t closing_bracket = line.find(']');
-    if (opening_bracket == string::npos || closing_bracket == string::npos || closing_bracket <= opening_bracket) {
+    if (opening_bracket == string_view::npos || closing_bracket == string_view::npos || closing_bracket <= opening_bracket) {
         return false;
     }
     key_string = line.substr(opening_bracket + 1, closing_bracket - opening_bracket - 1);
     size_t opening_brace = line.find('{');
     size_t closing_brace = line.find('}');
-    if (opening_brace == string::npos || closing_brace == string::npos || closing_brace <= opening_brace) {
+    if (opening_brace == string_view::npos || closing_brace == string_view::npos || closing_brace <= opening_brace) {
         return false;
     }
     size_t comma_after_parenthese = line.find("),");
     size_t comma_delimiter = line.find(',');
-    if (comma_after_parenthese != string::npos) {
+    if (comma_after_parenthese != string_view::npos) {
         comma_delimiter = comma_after_parenthese + 1;
     }
-    if (comma_delimiter == string::npos || comma_delimiter <= opening_brace || comma_delimiter >= closing_brace) {
+    if (comma_delimiter == string_view::npos || comma_delimiter <= opening_brace || comma_delimiter >= closing_brace) {
         return false;
     }
     primary = line.substr(opening_brace + 1, comma_delimiter - opening_brace - 1);
@@ -43,7 +43,7 @@ void parse_and_set_action_map() {
     oss log_buffer;
     bool log_buffer_empty = true;
     while (getline(config_file, line)) {
-        string key_string, primary, secondary;
+        string_view key_string, primary, secondary;
         if (!parse_line(line, key_string, primary, secondary)) {
             logg("Invalid line format: {}", line);
             continue;
@@ -52,7 +52,7 @@ void parse_and_set_action_map() {
         if (key != -1) {
             ac_numkey_event[key] = {get_function_by_name(primary), get_function_by_name(secondary)};
         }
-
+        // Logging, if enabled
         if (config.runtime_debugger) {
             logg("{} = {}, {}", key, primary, secondary);
         }

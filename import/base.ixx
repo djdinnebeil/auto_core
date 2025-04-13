@@ -61,6 +61,7 @@ export {
     // String Utilities
     using std::string;
     using std::wstring;
+    using std::string_view;
     using std::to_string;
     using std::stoi;
 

@@ -13,8 +13,8 @@ import core;
  * \param vk_code_string A string representing the virtual key code.
  * \return The integer value of the virtual key code, or -1 if not found.
  */
-export int get_numkey_vk_code(const string & vk_code_string) {
-    static const unordered_map<string, int> numkey_vk_code_map = {
+export int get_numkey_vk_code(string_view vk_code_string) {
+    static const unordered_map<string_view, int> numkey_vk_code_map = {
         {"numkey_0", numkey_0},
         {"numkey_1", numkey_1},
         {"numkey_2", numkey_2},
@@ -49,8 +49,8 @@ export int get_numkey_vk_code(const string & vk_code_string) {
  * 
  * \return A function pointer if the function name is found, or nullptr if not found.
  */
-export function<void()> get_function_by_name(const string& function_name) {
-    static const unordered_map<string, function<void()>> function_map = {
+export function<void()> get_function_by_name(string_view function_name) {
+    static const unordered_map<string_view, function<void()>> function_map = {
         {"print_iTunes_songs", &print_iTunes_songs},
         {"iTunes_next_song", &iTunes_next_song},
         {"print_next_up_song_list", &print_next_up_song_list},
@@ -113,7 +113,7 @@ export function<void()> get_function_by_name(const string& function_name) {
     if (function_name.rfind("make_print_choice", 0) == 0) {
         size_t opening_quotation = function_name.find('"');
         size_t closing_quotation = function_name.find("\",");
-        string choice_name = function_name.substr(opening_quotation + 1, closing_quotation - opening_quotation - 1);
+        string choice_name = string(function_name.substr(opening_quotation + 1, closing_quotation - opening_quotation - 1));
         bool bool_value = function_name.find("true", closing_quotation) != string::npos;
         return make_print_choice(choice_name, bool_value);
     }

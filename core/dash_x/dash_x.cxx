@@ -96,8 +96,8 @@ string extract_function_description_comment(const string& function_name) {
  * \param runtime_file The output file stream to write the function to.
  */
 void insert_vk_code(ofstream& runtime_file) {
-    runtime_file << R"(export int get_numkey_vk_code(const string & vk_code_string) {
-    static const unordered_map<string, int> numkey_vk_code_map = {
+    runtime_file << R"(export int get_numkey_vk_code(string_view vk_code_string) {
+    static const unordered_map<string_view, int> numkey_vk_code_map = {
         {"numkey_0", numkey_0},
         {"numkey_1", numkey_1},
         {"numkey_2", numkey_2},
@@ -134,7 +134,7 @@ void insert_special_case_in_function_by_name(ofstream& runtime_file) {
     if (function_name.rfind("make_print_choice", 0) == 0) {
         size_t opening_quotation = function_name.find('"');
         size_t closing_quotation = function_name.find("\",");
-        string choice_name = function_name.substr(opening_quotation + 1, closing_quotation - opening_quotation - 1);
+        string choice_name = string(function_name.substr(opening_quotation + 1, closing_quotation - opening_quotation - 1));
         bool bool_value = function_name.find("true", closing_quotation) != string::npos;
         return make_print_choice(choice_name, bool_value);
     }
@@ -196,8 +196,8 @@ int main(int argc, char* argv[]) {
     insert_vk_code(runtime_file);
     runtime_file << "\n";
     runtime_file << function_by_name_function_comment;
-    runtime_file << "export function<void()> get_function_by_name(const string& function_name) {\n"
-        << "    static const unordered_map<string, function<void()>> function_map = {\n";
+    runtime_file << "export function<void()> get_function_by_name(string_view function_name) {\n"
+        << "    static const unordered_map<string_view, function<void()>> function_map = {\n";
     string path = R"(C:\DJ\My Folder\Auto Core\import)";
     try {
         if (fs::is_directory(path)) {
