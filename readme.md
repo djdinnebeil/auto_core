@@ -63,12 +63,8 @@ Modules that are shared between components are marked by adding a \hardlink tag.
 - visual - Visual Studio-related files, such as .sln and .pdb.
 
 ## Config Folder
-
-### Summary
-
 The `config` folder holds all runtime and environment settings for Auto Core, while the `dash` folder provides a developer-facing overlay to support editing, debugging, and IntelliSense integration in VS Code.
 
-### Files
 - `clock.ini` — Defines `end_of_day`, such as `00:59` vs. `24:59`.
 - `logger.ini` — Enables enhanced debugging by forwarding all log statements to the console window.
 - `runtime.ini` — Controls whether runtime configuration is enabled. Also allows selection of logging mode: `debug`, `buffered`, or `silent`.
@@ -86,7 +82,6 @@ The Dash folder acts as a convenience layer to simplify modifying runtime mappin
 
 This setup enables VS Code to provide autocomplete for user-defined runtime functions by simply opening `dash_x.ini`, while linking directly to the active configuration via `runtime_map.ini`.
 
-
 ## Tagging Runtime Functions
 To make a function available for runtime configuration, tag it with \runtime.
 
@@ -94,8 +89,11 @@ After tagging, run dash_x.exe to update the function list. This ensures that the
 
 Note: Runtime configuration must be enabled in config/runtime.ini for these functions to take effect.
 
+## 
+
 ## Modules Overview
 For a detailed description of each module, please refer to the [Doxygen documentation](./docs/html/files.html).
+
 ## Requirements
 - Windows 11
 - C++ Compiler (supporting C++23)

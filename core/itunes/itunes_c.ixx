@@ -483,6 +483,16 @@ void print_iTunes_songs() {
     Sleep(50);
     paste_from_clipboard();
 }
+int set_tab_end() {
+    ifstream itunes_file(R"(.\config\itunes.ini)");
+    string line;
+    getline(itunes_file, line);
+    auto open_bracket = line.find('[');
+    auto close_bracket = line.find(']');
+    string value = line.substr(open_bracket + 1, close_bracket - open_bracket - 1);
+    itunes_file.close();
+    return stoi(value);
+}
 /**
  * \brief Replaces tabs with brackets in the input string.
  *
@@ -492,9 +502,16 @@ void print_iTunes_songs() {
 string replace_tabs_with_brackets(const string& input) {
     oss output;
     output << '[';
+    int tab_number = 0;
+    int tab_end = set_tab_end();
     for (char ch : input) {
         if (ch == '\t') {
+            tab_number++;
+            if (tab_number == tab_end) {
+                break;
+            }
             output << "] [";
+
         }
         else if (ch == '\r') {
         }

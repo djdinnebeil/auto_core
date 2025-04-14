@@ -301,6 +301,128 @@ bool Spotify::refresh_tokens() {
         return false;
     }
 }
+
+
+import <sqlite3.h>;
+/**
+ * \brief Formats the artist name(s).
+ * \param artists JSON array of artists.
+ * \return Formatted artist name(s) as a string.
+ */
+string Spotify::format_artist_name(const json& artists) {
+    string artist {};
+    if (artists.size() == 1) {
+        artist = artists[0]["name"];
+    }
+    else {
+        for (size_t i = 0; i < artists.size(); ++i) {
+            artist += artists[i]["name"];
+            if (i < artists.size() - 1) {
+                artist += ", ";
+            }
+        }
+    }
+    return artist;
+}
+void track_spotify_history(const json& song_details) {
+    static string db_path = R"(.\star\sp_history.db)";
+
+    const string name   = song_details["name"];
+    auto artists = song_details["artists"];
+    string artist {};
+    if (artists.size() == 1) {
+        artist = artists[0]["name"];
+    }
+    else {
+        for (size_t i = 0; i < artists.size(); ++i) {
+            artist += artists[i]["name"];
+            if (i < artists.size() - 1) {
+                artist += ", ";
+            }
+        }
+    }
+    const string album  = song_details["album"]["name"];
+    const string timestamp = get_datetime_stamp_with_seconds();
+
+    sqlite3* db = nullptr;
+    sqlite3_stmt* stmt = nullptr;
+
+    if (sqlite3_open(db_path.c_str(), &db) != SQLITE_OK) {
+        cerr << "Error opening database: " << sqlite3_errmsg(db) << "\n";
+        return;
+    }
+
+    // Step 1: Check if the song is already in the database
+    const char* select_sql = R"sql(
+        SELECT id, playcount FROM spotify_history
+        WHERE name = ? AND artist = ? AND album = ?
+    )sql";
+
+    if (sqlite3_prepare_v2(db, select_sql, -1, &stmt, nullptr) != SQLITE_OK) {
+        cerr << "Error preparing SELECT: " << sqlite3_errmsg(db) << "\n";
+        sqlite3_close(db);
+        return;
+    }
+
+    sqlite3_bind_text(stmt, 1, name.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 2, artist.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 3, album.c_str(), -1, SQLITE_STATIC);
+
+    int rc = sqlite3_step(stmt);
+    if (rc == SQLITE_ROW) {
+        // Song exists: update playcount and last_played
+        int id = sqlite3_column_int(stmt, 0);
+        int playcount = sqlite3_column_int(stmt, 1);
+        sqlite3_finalize(stmt);
+
+        const char* update_sql = R"sql(
+            UPDATE spotify_history
+            SET playcount = ?, last_played = ?
+            WHERE id = ?
+        )sql";
+
+        if (sqlite3_prepare_v2(db, update_sql, -1, &stmt, nullptr) == SQLITE_OK) {
+            sqlite3_bind_int(stmt, 1, playcount + 1);
+            sqlite3_bind_text(stmt, 2, timestamp.c_str(), -1, SQLITE_STATIC);
+            sqlite3_bind_int(stmt, 3, id);
+            if (sqlite3_step(stmt) != SQLITE_DONE) {
+                cerr << "Error updating row: " << sqlite3_errmsg(db) << "\n";
+            }
+        }
+        else {
+            cerr << "Error preparing UPDATE: " << sqlite3_errmsg(db) << "\n";
+        }
+    }
+    else {
+        // Song does not exist: insert new row
+        sqlite3_finalize(stmt);
+
+        const char* insert_sql = R"sql(
+            INSERT INTO spotify_history (name, artist, album, playcount, last_played)
+            VALUES (?, ?, ?, 1, ?)
+        )sql";
+
+        if (sqlite3_prepare_v2(db, insert_sql, -1, &stmt, nullptr) == SQLITE_OK) {
+            sqlite3_bind_text(stmt, 1, name.c_str(), -1, SQLITE_STATIC);
+            sqlite3_bind_text(stmt, 2, artist.c_str(), -1, SQLITE_STATIC);
+            sqlite3_bind_text(stmt, 3, album.c_str(), -1, SQLITE_STATIC);
+            sqlite3_bind_text(stmt, 4, timestamp.c_str(), -1, SQLITE_STATIC);
+            if (sqlite3_step(stmt) != SQLITE_DONE) {
+                cerr << "Error inserting row: " << sqlite3_errmsg(db) << "\n";
+            }
+        }
+        else {
+            cerr << "Error preparing INSERT: " << sqlite3_errmsg(db) << "\n";
+        }
+    }
+
+    if (stmt) {
+        sqlite3_finalize(stmt);
+    }
+
+    sqlite3_close(db);
+}
+
 /**
  * \brief Retrieves the current Spotify song.
  */
@@ -338,6 +460,7 @@ void Spotify::get_current_song() {
     sp_logger.logg_and_print(current_song);
     last_song = current_song;
     song_history.push_back(current_song);
+    track_spotify_history(song_details["item"]);
     return;
 }
 /**
@@ -349,26 +472,7 @@ void Spotify::calculate_remaining_song_duration_ms(const json& song_details) {
     int duration_ms = song_details["item"]["duration_ms"];
     remaining_song_duration_ms = duration_ms - progress_ms;
 }
-/**
- * \brief Formats the artist name(s).
- * \param artists JSON array of artists.
- * \return Formatted artist name(s) as a string.
- */
-string Spotify::format_artist_name(const json& artists) {
-    string artist {};
-    if (artists.size() == 1) {
-        artist = artists[0]["name"];
-    }
-    else {
-        for (size_t i = 0; i < artists.size(); ++i) {
-            artist += artists[i]["name"];
-            if (i < artists.size() - 1) {
-                artist += ", ";
-            }
-        }
-    }
-    return artist;
-}
+
 /**
  * \brief Formats the song title.
  * \param song_details JSON object containing song details.

@@ -37,8 +37,6 @@ export import logger_c;
 export import logger_x;
 export import logger_t;
 
-using std::string_view;
-
 /**
  * \brief Placeholder structure to provide symmetry in Visual Studio. This can safely be removed.
  */
