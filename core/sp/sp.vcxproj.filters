@@ -27,6 +27,12 @@
     <ClCompile Include="sp_x.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\shared\pipes_x\pipes_x.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared\core_runtime\thread.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\shared\core_runtime\base.ixx">
       <Filter>Header Files</Filter>
     </ClCompile>
@@ -51,16 +57,10 @@
     <ClCompile Include="..\..\shared\core_runtime\print.ixx">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\shared\core_runtime\thread.ixx">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\shared\core_runtime\utils.ixx">
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\shared\core_runtime\visual.ixx">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\shared\pipes_x\pipes_x.ixx">
       <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>

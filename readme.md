@@ -142,6 +142,9 @@ Note: Runtime configuration must be enabled in config/runtime.ini for these func
 ## Spotify
 The Spotify component enables for music integration with Spotify. The component maintains a database of the user's history because such data isn't immediately available by Spotify.
 
+### Upsert
+Upsert is used to enable efficient processing if the database grows very large.
+
 ## Runtime Performance
 
 The runtime behavior of Auto Core can be adjusted by modifying the configuration settings in `config\runtime.ini`. There are four available levels, each providing a tradeoff between observability and performance:
