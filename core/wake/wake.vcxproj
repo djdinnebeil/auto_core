@@ -141,17 +141,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\shared\include\base.ixx" />
-    <ClCompile Include="..\..\shared\include\clipboard.ixx" />
-    <ClCompile Include="..\..\shared\include\clock.ixx" />
-    <ClCompile Include="..\..\shared\include\config.ixx" />
-    <ClCompile Include="..\..\shared\include\keyboard.ixx" />
-    <ClCompile Include="..\..\shared\include\logger.ixx" />
-    <ClCompile Include="..\..\shared\include\logger_c.ixx" />
-    <ClCompile Include="..\..\shared\include\print.ixx" />
-    <ClCompile Include="..\..\shared\include\thread.ixx" />
-    <ClCompile Include="..\..\shared\include\utils.ixx" />
-    <ClCompile Include="..\..\shared\include\visual.ixx" />
+    <ClCompile Include="..\..\shared\core_runtime\base.ixx" />
+    <ClCompile Include="..\..\shared\core_runtime\clipboard.ixx" />
+    <ClCompile Include="..\..\shared\core_runtime\clock.ixx" />
+    <ClCompile Include="..\..\shared\core_runtime\config.ixx" />
+    <ClCompile Include="..\..\shared\core_runtime\keyboard.ixx" />
+    <ClCompile Include="..\..\shared\core_runtime\logger.ixx" />
+    <ClCompile Include="..\..\shared\core_runtime\logger_c.ixx" />
+    <ClCompile Include="..\..\shared\core_runtime\print.ixx" />
+    <ClCompile Include="..\..\shared\core_runtime\thread.ixx" />
+    <ClCompile Include="..\..\shared\core_runtime\utils.ixx" />
+    <ClCompile Include="..\..\shared\core_runtime\visual.ixx" />
     <ClCompile Include="..\..\shared\pipes_x\pipes_x.ixx" />
     <ClCompile Include="wake_x.cxx" />
     <ClCompile Include="wake_x.ixx" />

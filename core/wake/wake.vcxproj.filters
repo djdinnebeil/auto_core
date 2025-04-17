@@ -21,40 +21,40 @@
     <ClCompile Include="wake_x.ixx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\shared\include\base.ixx">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\shared\include\clipboard.ixx">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\shared\include\clock.ixx">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\shared\include\config.ixx">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\shared\include\keyboard.ixx">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\shared\include\logger.ixx">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\shared\include\logger_c.ixx">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\shared\include\print.ixx">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\shared\include\thread.ixx">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\shared\include\utils.ixx">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\shared\include\visual.ixx">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\shared\pipes_x\pipes_x.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared\core_runtime\base.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared\core_runtime\clipboard.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared\core_runtime\clock.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared\core_runtime\config.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared\core_runtime\keyboard.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared\core_runtime\logger.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared\core_runtime\logger_c.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared\core_runtime\print.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared\core_runtime\thread.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared\core_runtime\utils.ixx">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\shared\core_runtime\visual.ixx">
       <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
