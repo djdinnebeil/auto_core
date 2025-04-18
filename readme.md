@@ -22,6 +22,7 @@ The components are stored in the 'core' directory.
 | `dash`    | Runtime mapping + dev overlay           | `dash_x.exe`     | Supports IntelliSense |
 | `itunes`  | Controls iTunes                         | `itunes.exe`     | Uses COM |
 | `server`  | Hosts local file server                 | `server.exe`     | Simple HTTP server |
+| `slash`   | Empties the recycle bin                 | `slash.exe`      | Prints deleted items |
 | `sp`      | Spotify history tracking                | `sp.exe`         | Stores play history |
 | `wake`    | Tracks system wake events               | `wake.exe`       | Logs resume timestamps |
 
@@ -30,14 +31,9 @@ To differentiate component scripts from main scripts, the following notation is 
 - _c - this indicates a class for the component
 - _t - this indicates a thread for the component
 
-The main component will have:
-sp.ixx
-while the external component will have:
-sp_x.ixx
+For example, the main component will use `sp.cxx` while the Spotify component uses `sp_x.cxx`
 
-The components talk to each other through pipes.
-
-Modules that are shared are marked by adding a \hardlink tag.
+The components communicate with the main component by using named pipes. There is a separate `pipes_x.ixx` for the core components.
 
 ## Adding a New Component
 
@@ -129,7 +125,7 @@ This setup enables VS Code to provide autocomplete for user-defined runtime func
 
 ## Shared Folder
 - auto_core_dll - contains auto_core_dll.lib and the runtime .dll
-- core_runtime - contains the shared header files
+- core_runtime - contains the shared header files. Modules that are shared are marked with \hardlink.
 - pipes_x - contains the pipes file to be used by components if ipc is needed
 
 ## Tagging Runtime Functions
@@ -143,7 +139,7 @@ Note: Runtime configuration must be enabled in config/runtime.ini for these func
 The Spotify component enables for music integration with Spotify. The component maintains a database of the user's history because such data isn't immediately available by Spotify.
 
 ### Upsert
-Upsert is used to enable efficient processing if the database grows very large.
+Upsert is used to enable efficient processing if the database grows large.
 
 ## Runtime Performance
 
