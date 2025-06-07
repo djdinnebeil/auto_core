@@ -1,9 +1,9 @@
 /**
 \file itunes_t.ixx
 \brief This module provides threading support for iTunes integration.
- 
+
 This module manages the iTunes component's threading, including handling song transitions and monitoring playback state changes.
- 
+
  */
 export module itunes_t;
 import visual;

@@ -13,6 +13,8 @@ import <Windows.h>;
 import <comdef.h>;
 import <atlbase.h>;
 
+using std::scoped_lock;
+
 struct TrackInfo {
     wstring name;
     wstring artist;
@@ -53,6 +55,7 @@ public:
 
 export iTunes ac_iTunes;
 export mutex iT_mtx;
+export mutex history_mtx;
 export condition_variable iT_cv;
 export bool iT_playback_state_change = false;
 
@@ -372,16 +375,19 @@ wstring iTunes::get_current_track() {
     ws << '[' << curr_song.name << "] [" << curr_song.artist << "] [" << curr_song.album << "] [" << dur.str() << ']';
     track_location = curr_song.location;
     wstring current_song = ws.str();
-    if (last_retrieved_song != current_song) {
-        iTunes_logger.loggnl_and_loggnl("current song: ");
-        iTunes_logger.logg_and_print(current_song);
-        song_history.push_back(current_song);
+    {
+        scoped_lock lock(history_mtx);
+        if (last_retrieved_song != current_song) {
+            iTunes_logger.loggnl_and_loggnl("current song: ");
+            iTunes_logger.logg_and_print(current_song);
+            song_history.push_back(current_song);
+        }
+        else if (song_history.empty()) {
+            //iTunes_logger.logg_and_print(current_song);
+            song_history.push_back(current_song);
+        }
+        last_retrieved_song = current_song;
     }
-    else if (song_history.empty()) {
-        iTunes_logger.logg_and_print(current_song);
-        song_history.push_back(current_song);
-    }
-    last_retrieved_song = current_song;
     return current_song;
 }
 /**
@@ -466,17 +472,20 @@ void print_iTunes_songs() {
     iTunes_logger.logg_and_logg("print_iTunes_songs()");
     wss song_text;
     ac_iTunes.get_current_track();
-    if (!ac_iTunes.song_history.empty()) {
-        for (const auto& song : ac_iTunes.song_history) {
-            song_text << song << L"\n";
+    {
+        scoped_lock lock(history_mtx);
+        if (!ac_iTunes.song_history.empty()) {
+            for (const auto& song : ac_iTunes.song_history) {
+                song_text << song << L"\n";
+            }
+            if (ac_iTunes.song_history.size() != 1) {
+                iTunes_logger.loggnl_and_printnl(song_text.str());
+            }
+            ac_iTunes.song_history.clear();
         }
-        if (ac_iTunes.song_history.size() != 1) {
-            iTunes_logger.loggnl_and_printnl(song_text.str());
+        else {
+            song_text << L"\n";
         }
-        ac_iTunes.song_history.clear();
-    }
-    else {
-        song_text << L"\n";
     }
     song_text << L"\n";
     set_clipboard_text(song_text.str());
