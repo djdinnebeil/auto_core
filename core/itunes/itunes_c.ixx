@@ -160,6 +160,7 @@ void iTunes::initialize_com() {
     if (initialized) {
         return;
     }
+
     hr = CoInitializeEx(NULL, COINIT_MULTITHREADED);
     if (FAILED(hr)) {
         iTunes_logger.logg_and_print("Failed to initialize COM library.");
@@ -178,6 +179,7 @@ void iTunes::initialize_com() {
         CoUninitialize();
         return;
     }
+
     iTunes_thread = thread(&iTunes::start_iTunes_thread, this);
     iTunes_thread.detach();
     initialized = true;
@@ -382,10 +384,11 @@ wstring iTunes::get_current_track() {
             iTunes_logger.logg_and_print(current_song);
             song_history.push_back(current_song);
         }
-        else if (song_history.empty()) {
-            //iTunes_logger.logg_and_print(current_song);
-            song_history.push_back(current_song);
-        }
+        // Re-add the current playing song to the song history.
+        //else if (song_history.empty()) {
+        //    //iTunes_logger.logg_and_print(current_song);
+        //    song_history.push_back(current_song);
+        //}
         last_retrieved_song = current_song;
     }
     return current_song;

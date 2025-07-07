@@ -35,7 +35,7 @@ void iTunes::start_iTunes_thread() {
     Sleep(25);
     iTunes_logger.logg_and_logg("iTunes_thread started");
     const int sleep_timerate_secs_playing = 5;
-    const int sleep_timerate_secs_pause = 15;
+    const int sleep_timerate_secs_pause = 5;
     const int extra_time_ms = 100;
     const int processing_delay_ms = 252;
     Sleep(350);

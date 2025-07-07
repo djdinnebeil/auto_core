@@ -4,6 +4,7 @@ import config;
 import clipboard;
 import logger;
 import print;
+import utils;
 import thread;
 import main;
 import <Windows.h>;
@@ -163,13 +164,31 @@ void print_gpt_message() {
 }
 
 /**
- * \brief Prints networking.
+* \brief Retrieves the openai api key.
+* 
+* 
+* 
+*/
+wstring set_openai_api_key() {
+    ifstream openai_api_key_file(R"(.\dist\openai_api_key.txt)");
+    string line;
+    getline(openai_api_key_file, line);
+    openai_api_key_file.close();
+    logg("openai_api_key set");
+    wstring openai_api_key = str_to_wstr(line);
+    return openai_api_key;
+}
+
+/**
+ * \brief Prints the api key for OpenAI.
  *
- * This function prints 'networking'.
+ * This function prints the openai api key.
  *
  * \runtime
  */
-void print_networking() {
-    set_clipboard_text(L"Networking");
+void print_openai_api_key() {
+    static wstring openai_api_key = set_openai_api_key();
+    set_clipboard_text(openai_api_key);
     paste_from_clipboard();
+    print("openai_api_key inserted");
 }

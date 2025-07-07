@@ -7,7 +7,7 @@
 export module journey;
 import base;
 import print;
-import <windows.h>;
+import <Windows.h>;
 
 export {
     bool create_process(const wstring& path);

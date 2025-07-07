@@ -17,5 +17,5 @@ import <Windows.h>;
 
 export {
     void print_gpt_message();
-    void print_networking();
+    void print_openai_api_key();
 }
